@@ -10,12 +10,19 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <compile.plugin.version>3.8.0</compile.plugin.version>
         <mockito.version>3.11.2</mockito.version>
         <junit.version>4.11</junit.version>
         <lombok.version>1.18.22</lombok.version>
         <hibernate.version>5.6.0.Final</hibernate.version>
         <postgresql.version>42.2.23</postgresql.version>
         <flyway.version>8.0.5</flyway.version>
+
+        <db.driver>org.postgresql.Driver</db.driver>
+        <db.url>jdbc:postgresql://localhost:5432/postgres</db.url>
+        <db.username>postgres</db.username>
+        <db.password>postgres</db.password>
+        <db.schema>public</db.schema>
     </properties>
 
     <dependencies>
@@ -45,18 +52,20 @@
                     <artifactId>flyway-maven-plugin</artifactId>
                     <version>${flyway.version}</version>
                     <configuration>
-                        <url>url</url>
-                        <user>user</user>
-                        <password>pass</password>
+                        <url>${db.url}</url>
+                        <user>${db.username}</user>
+                        <password>${db.password}</password>
                         <schemas>
-                            <schema>schema</schema>
+                            <schema>${db.schema}</schema>
                         </schemas>
+                        <driver>${db.driver}</driver>
+                        <location>db/migration</location>
                     </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.0</version>
+                    <version>${compile.plugin.version}</version>
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
