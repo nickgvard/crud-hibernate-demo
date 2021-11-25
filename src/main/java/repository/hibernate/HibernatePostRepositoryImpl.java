@@ -1,6 +1,6 @@
 package repository.hibernate;
 
-import model.Post;
+import model.entity.Post;
 import repository.PostRepository;
 
 import java.util.List;

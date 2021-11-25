@@ -59,7 +59,6 @@
                             <schema>${db.schema}</schema>
                         </schemas>
                         <driver>${db.driver}</driver>
-                        <location>db/migration</location>
                     </configuration>
                 </plugin>
                 <plugin>

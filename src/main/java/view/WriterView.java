@@ -1,7 +1,7 @@
 package view;
 
 import controller.WriterController;
-import model.Writer;
+import model.entity.Writer;
 
 import java.util.List;
 

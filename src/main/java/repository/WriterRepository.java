@@ -1,6 +1,6 @@
 package repository;
 
-import model.Writer;
+import model.entity.Writer;
 
 /**
  * @author Nikita Gvardeev

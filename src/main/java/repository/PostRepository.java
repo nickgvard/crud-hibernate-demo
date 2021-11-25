@@ -1,6 +1,6 @@
 package repository;
 
-import model.Post;
+import model.entity.Post;
 
 /**
  * @author Nikita Gvardeev

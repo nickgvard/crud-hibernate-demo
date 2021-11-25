@@ -1,6 +1,6 @@
 package service;
 
-import model.Writer;
+import model.entity.Writer;
 import repository.hibernate.HibernateWriterRepositoryImpl;
 
 import java.util.List;

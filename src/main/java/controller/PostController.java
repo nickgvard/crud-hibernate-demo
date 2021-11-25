@@ -1,6 +1,6 @@
 package controller;
 
-import model.Post;
+import model.entity.Post;
 import service.PostService;
 
 import java.util.List;
