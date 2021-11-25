@@ -1,0 +1,5 @@
+INSERT INTO post_status
+VALUES
+(1, 'ACTIVE'),
+(2, 'UNDER_REVIEW'),
+(3, 'DELETE')
