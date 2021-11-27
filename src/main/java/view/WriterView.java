@@ -27,7 +27,7 @@ public class WriterView {
     }
 
     public void showAllWriters() {
-        List<Writer> writers = writerController.getAll();
+        List<Writer> writers = writerController.findAll();
         if(!writers.isEmpty()) {
             for (Writer writer : writers) {
                 System.out.println(writer);
@@ -46,8 +46,8 @@ public class WriterView {
         System.out.println("Writer updated successful");
     }
 
-    public void deleteWriter(Writer writer) {
-        writerController.deleteById(writer);
+    public void deleteWriter(long id) {
+        writerController.deleteById(id);
         System.out.println("Writer deleted successful");
     }
 }

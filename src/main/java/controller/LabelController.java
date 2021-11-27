@@ -22,19 +22,19 @@ public class LabelController {
         return labelService.getById(id);
     }
 
-    public List<Label> getAll() {
-        return labelService.getAll();
+    public List<Label> findAll() {
+        return labelService.findAll();
     }
 
     public Label save(Label label) {
         return labelService.save(label);
     }
 
-    public Label update(Label label) {
-        return labelService.update(label);
+    public void update(Label label) {
+        labelService.update(label);
     }
 
-    public Label delete(Label label) {
-        return labelService.deleteById(label);
+    public void deleteById(long id) {
+        labelService.deleteById(id);
     }
 }

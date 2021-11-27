@@ -1,7 +1,7 @@
 package service;
 
 import model.entity.Writer;
-import repository.hibernate.HibernateWriterRepositoryImpl;
+import repository.hibernate.WriterRepositoryImpl;
 
 import java.util.List;
 
@@ -12,17 +12,17 @@ import java.util.List;
 
 public class WriterService {
 
-    private HibernateWriterRepositoryImpl writerRepository;
+    private WriterRepositoryImpl writerRepository;
 
     public WriterService() {
-        writerRepository = new HibernateWriterRepositoryImpl();
+        writerRepository = new WriterRepositoryImpl();
     }
 
     public Writer getById(long id) {
         return writerRepository.getById(id);
     }
 
-    public List<Writer> getAll() {
+    public List<Writer> findAll() {
         return writerRepository.findAll();
     }
 
@@ -30,11 +30,11 @@ public class WriterService {
         return writerRepository.save(writer);
     }
 
-    public Writer update(Writer writer) {
-        return writerRepository.update(writer);
+    public void update(Writer writer) {
+        writerRepository.update(writer);
     }
 
-    public Writer deleteById(Writer writer) {
-        return writerRepository.deleteById(writer);
+    public void deleteById(long id) {
+        writerRepository.deleteById(id);
     }
 }

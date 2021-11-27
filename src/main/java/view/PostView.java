@@ -27,7 +27,7 @@ public class PostView {
     }
 
     public void showAllPosts() {
-        List<Post> posts = postController.getAll();
+        List<Post> posts = postController.findAll();
         if(!posts.isEmpty()) {
             for (Post post : posts) {
                 System.out.println(post);
@@ -46,8 +46,8 @@ public class PostView {
         System.out.println("Post updated successful");
     }
 
-    public void deletePost(Post post) {
-        postController.deleteById(post);
+    public void deletePost(long id) {
+        postController.deleteById(id);
         System.out.println("Post deleted successful");
     }
 }

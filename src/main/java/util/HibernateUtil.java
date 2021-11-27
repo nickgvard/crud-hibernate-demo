@@ -11,7 +11,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
  */
 public class HibernateUtil {
 
-    private final static HibernateUtil INSTANCE = new HibernateUtil();
     private static SessionFactory sessionFactory;
 
     static {
@@ -28,15 +27,11 @@ public class HibernateUtil {
 
     private HibernateUtil() { }
 
-    public static HibernateUtil hibernateUtil() {
-        return INSTANCE;
-    }
-
-    public SessionFactory sessionFactory() {
+    public static SessionFactory sessionFactory() {
         return sessionFactory;
     }
 
-    public void shoutDown() {
+    public static void shoutDown() {
         sessionFactory.close();
     }
 }

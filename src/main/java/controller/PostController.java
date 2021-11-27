@@ -22,20 +22,20 @@ public class PostController {
         return postService.getById(id);
     }
 
-    public List<Post> getAll() {
-        return postService.getAll();
+    public List<Post> findAll() {
+        return postService.findAll();
     }
 
     public Post save(Post entity) {
         return postService.save(entity);
     }
 
-    public Post update(Post entity) {
-        return postService.update(entity);
+    public void update(Post entity) {
+        postService.update(entity);
     }
 
-    public Post deleteById(Post entity) {
-        return postService.deleteById(entity);
+    public void deleteById(long id) {
+        postService.deleteById(id);
     }
 
 }

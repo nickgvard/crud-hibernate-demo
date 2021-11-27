@@ -1,12 +1,12 @@
 package model.entity;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author Nikita Gvardeev
@@ -16,7 +16,7 @@ import java.util.Objects;
 @Entity()
 @Table(name = "post", schema = "public", catalog = "postgres")
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -26,13 +26,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NonNull
     private String content;
 
-    @NonNull
     private Timestamp created;
 
-    @NonNull
     private Timestamp updated;
 
     @ManyToOne
@@ -40,8 +37,15 @@ public class Post {
     @ToString.Exclude
     private Writer writer;
 
-    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER)
-    private List<Label> labels;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "post_label",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "label_id"))
+    private Set<Label> labels = new HashSet<>();
+
+    public void addLabel(Label label) {
+        labels.add(label);
+    }
 
     @Override
     public boolean equals(Object o) {

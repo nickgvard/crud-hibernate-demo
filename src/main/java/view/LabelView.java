@@ -27,7 +27,7 @@ public class LabelView {
     }
 
     public void showAllLabels() {
-        List<Label> labels = labelController.getAll();
+        List<Label> labels = labelController.findAll();
         if(!labels.isEmpty()) {
             for (Label label : labels) {
                 System.out.println(label);
@@ -45,8 +45,8 @@ public class LabelView {
         labelController.update(label);
         System.out.println("Label updated successful");
     }
-    public void deleteLabel(Label label) {
-        labelController.delete(label);
+    public void deleteLabel(long id) {
+        labelController.deleteById(id);
         System.out.println("Label deleted successful");
     }
 }

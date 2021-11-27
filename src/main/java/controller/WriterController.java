@@ -22,19 +22,19 @@ public class WriterController {
         return writerService.getById(id);
     }
 
-    public List<Writer> getAll() {
-        return writerService.getAll();
+    public List<Writer> findAll() {
+        return writerService.findAll();
     }
 
     public Writer save(Writer entity) {
         return writerService.save(entity);
     }
 
-    public Writer update(Writer entity) {
-        return writerService.update(entity);
+    public void update(Writer entity) {
+        writerService.update(entity);
     }
 
-    public Writer deleteById(Writer entity) {
-        return writerService.deleteById(entity);
+    public void deleteById(long id) {
+        writerService.deleteById(id);
     }
 }

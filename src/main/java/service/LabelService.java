@@ -1,7 +1,7 @@
 package service;
 
 import model.entity.Label;
-import repository.hibernate.HibernateLabelRepositoryImpl;
+import repository.hibernate.LabelRepositoryImpl;
 
 import java.util.List;
 
@@ -12,17 +12,17 @@ import java.util.List;
 
 public class LabelService {
 
-    private HibernateLabelRepositoryImpl labelRepository;
+    private LabelRepositoryImpl labelRepository;
 
     public LabelService() {
-        labelRepository = new HibernateLabelRepositoryImpl();
+        labelRepository = new LabelRepositoryImpl();
     }
 
     public Label getById(long id) {
         return labelRepository.getById(id);
     }
 
-    public List<Label> getAll() {
+    public List<Label> findAll() {
         return labelRepository.findAll();
     }
 
@@ -30,11 +30,11 @@ public class LabelService {
         return labelRepository.save(label);
     }
 
-    public Label update(Label label) {
-        return labelRepository.update(label);
+    public void update(Label label) {
+        labelRepository.update(label);
     }
 
-    public Label deleteById(Label label) {
-        return labelRepository.deleteById(label);
+    public void deleteById(long id) {
+        labelRepository.deleteById(id);
     }
 }

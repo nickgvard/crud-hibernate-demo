@@ -8,6 +8,9 @@
     <property name="connection.driver_class">org.postgresql.Driver</property>
     <property name="connection.username">postgres</property>
     <property name="connection.password">postgres</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.highlight_sql">true</property>
 
     <mapping class="model.entity.Label"/>
     <mapping class="model.entity.Post"/>

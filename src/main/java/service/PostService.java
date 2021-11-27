@@ -1,7 +1,7 @@
 package service;
 
 import model.entity.Post;
-import repository.hibernate.HibernatePostRepositoryImpl;
+import repository.hibernate.PostRepositoryImpl;
 
 import java.util.List;
 
@@ -12,17 +12,17 @@ import java.util.List;
 
 public class PostService {
 
-    private HibernatePostRepositoryImpl postRepository;
+    private PostRepositoryImpl postRepository;
 
     public PostService() {
-        postRepository = new HibernatePostRepositoryImpl();
+        postRepository = new PostRepositoryImpl();
     }
 
     public Post getById(long id) {
         return postRepository.getById(id);
     }
 
-    public List<Post> getAll() {
+    public List<Post> findAll() {
         return postRepository.findAll();
     }
 
@@ -30,11 +30,11 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public Post update(Post post) {
-        return postRepository.update(post);
+    public void update(Post post) {
+        postRepository.update(post);
     }
 
-    public Post deleteById(Post post) {
-        return postRepository.deleteById(post);
+    public void deleteById(long id) {
+        postRepository.deleteById(id);
     }
 }

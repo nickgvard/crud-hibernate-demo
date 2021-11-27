@@ -3,8 +3,9 @@ package model.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author Nikita Gvardeev
@@ -13,7 +14,7 @@ import java.util.Objects;
 @Entity()
 @Table(name = "writer", schema = "public", catalog = "postgres")
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -23,14 +24,19 @@ public class Writer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NonNull
+    @Column(name = "first_name")
     private String firstName;
 
-    @NonNull
+    @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "writer", fetch = FetchType.LAZY)
-    private List<Post> posts;
+    @OneToMany(mappedBy = "writer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Post> posts = new HashSet<>();
+
+    public void addPost(Post post) {
+        posts.add(post);
+        post.setWriter(this);
+    }
 
     @Override
     public boolean equals(Object o) {
