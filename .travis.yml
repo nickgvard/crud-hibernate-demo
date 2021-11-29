@@ -1,5 +1,4 @@
 language: java
-jdk: jdk8
 sudo: false
 cache:
   directories:
