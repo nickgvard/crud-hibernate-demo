@@ -1,11 +1,9 @@
-package model.entity;
+package entity;
 
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Nikita Gvardeev
@@ -30,8 +28,8 @@ public class Writer {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "writer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Post> posts = new HashSet<>();
+    @OneToMany(mappedBy = "writer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Post> posts = new ArrayList<>();
 
     public void addPost(Post post) {
         posts.add(post);

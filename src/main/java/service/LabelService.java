@@ -1,6 +1,6 @@
 package service;
 
-import model.entity.Label;
+import entity.Label;
 import repository.hibernate.LabelRepositoryImpl;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package controller;
 
-import model.entity.Label;
+import entity.Label;
 import service.LabelService;
 
 import java.util.List;

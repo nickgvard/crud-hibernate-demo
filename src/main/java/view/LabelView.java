@@ -1,7 +1,7 @@
 package view;
 
 import controller.LabelController;
-import model.entity.Label;
+import entity.Label;
 
 import java.util.List;
 

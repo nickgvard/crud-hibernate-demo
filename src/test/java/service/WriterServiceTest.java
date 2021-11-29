@@ -1,6 +1,6 @@
 package service;
 
-import model.entity.Writer;
+import entity.Writer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

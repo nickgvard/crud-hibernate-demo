@@ -1,5 +1,6 @@
-package util;
+package utils;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -18,7 +19,9 @@ public class HibernateUtil {
                 .configure()
                 .build();
         try {
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            sessionFactory = new MetadataSources(registry)
+                    .buildMetadata()
+                    .buildSessionFactory();
         }catch (Exception e) {
             StandardServiceRegistryBuilder.destroy(registry);
             e.printStackTrace();
@@ -27,8 +30,8 @@ public class HibernateUtil {
 
     private HibernateUtil() { }
 
-    public static SessionFactory sessionFactory() {
-        return sessionFactory;
+    public static Session session() {
+        return sessionFactory.openSession();
     }
 
     public static void shoutDown() {

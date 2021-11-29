@@ -1,12 +1,10 @@
-package model.entity;
+package entity;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Nikita Gvardeev
@@ -41,7 +39,7 @@ public class Post {
     @JoinTable(name = "post_label",
             joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "label_id"))
-    private Set<Label> labels = new HashSet<>();
+    private List<Label> labels = new ArrayList<>();
 
     public void addLabel(Label label) {
         labels.add(label);

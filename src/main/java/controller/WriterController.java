@@ -1,6 +1,6 @@
 package controller;
 
-import model.entity.Writer;
+import entity.Writer;
 import service.WriterService;
 
 import java.util.List;

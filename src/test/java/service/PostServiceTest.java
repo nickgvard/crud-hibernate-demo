@@ -1,6 +1,6 @@
 package service;
 
-import model.entity.Post;
+import entity.Post;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

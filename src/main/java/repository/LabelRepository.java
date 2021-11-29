@@ -1,6 +1,6 @@
 package repository;
 
-import model.entity.Label;
+import entity.Label;
 
 /**
  * @author Nikita Gvardeev

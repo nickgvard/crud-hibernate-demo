@@ -1,8 +1,9 @@
-package model.entity;
+package entity;
 
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class Label {
             joinColumns = @JoinColumn(name = "label_id"),
             inverseJoinColumns = @JoinColumn(name ="post_id"))
     @ToString.Exclude
-    private Set<Post> posts;
+    private List<Post> posts;
 
     @Override
     public boolean equals(Object o) {

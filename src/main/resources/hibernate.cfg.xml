@@ -12,8 +12,8 @@
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.highlight_sql">true</property>
 
-    <mapping class="model.entity.Label"/>
-    <mapping class="model.entity.Post"/>
-    <mapping class="model.entity.Writer"/>
+    <mapping class="entity.Label"/>
+    <mapping class="entity.Post"/>
+    <mapping class="entity.Writer"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,13 +1,11 @@
 package repository.hibernate;
 
-import javafx.geometry.Pos;
-import model.entity.Post;
+import entity.Post;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import repository.PostRepository;
-import util.HibernateUtil;
+import utils.HibernateUtil;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -18,51 +16,48 @@ public class PostRepositoryImpl implements PostRepository {
 
     @Override
     public Post getById(Long id) {
-        Session session = HibernateUtil.sessionFactory().openSession();
-        Post post = session.get(Post.class, id);
-        session.close();
-        return post;
+        try(Session session = HibernateUtil.session()){
+            return session.get(Post.class, id);
+        }
     }
 
     @Override
     public List<Post> findAll() {
-        Session session = HibernateUtil.sessionFactory().openSession();
-        Query<Post> query = session.createQuery("FROM Post");
-        List<Post> posts = query.getResultList();
-        session.close();
-        return posts;
+        try(Session session = HibernateUtil.session()) {
+            Query<Post> query = session.createQuery("FROM Post");
+            return query.getResultList();
+        }
     }
 
     @Override
     public Post save(Post post) {
-        Session session = HibernateUtil.sessionFactory().openSession();
-        session.beginTransaction();
-        Long id = (Long) session.save(post);
-        session.getTransaction().commit();
-        Post persist = session.load(Post.class, id);
-        session.close();
-        return persist;
+        try(Session session = HibernateUtil.session()) {
+            session.beginTransaction();
+            Long id = (Long) session.save(post);
+            session.getTransaction().commit();
+            return session.load(Post.class, id);
+        }
     }
 
     @Override
     public void update(Post post) {
-        Session session = HibernateUtil.sessionFactory().openSession();
-        session.beginTransaction();
-        Post persist = session.load(Post.class, post.getId());
-        persist.setContent(post.getContent());
-        persist.setUpdated(post.getUpdated());
-        session.getTransaction().commit();
-        session.close();
+        try(Session session = HibernateUtil.session()) {
+            session.beginTransaction();
+            Post persist = session.load(Post.class, post.getId());
+            persist.setContent(post.getContent());
+            persist.setUpdated(post.getUpdated());
+            session.getTransaction().commit();
+        }
     }
 
     @Override
     public void deleteById(Long id) {
-        Session session = HibernateUtil.sessionFactory().openSession();
-        session.beginTransaction();
-        Post post = new Post();
-        post.setId(id);
-        session.delete(post);
-        session.getTransaction().commit();
-        session.close();
+        try(Session session = HibernateUtil.session();) {
+            session.beginTransaction();
+            Post post = new Post();
+            post.setId(id);
+            session.delete(post);
+            session.getTransaction().commit();
+        }
     }
 }

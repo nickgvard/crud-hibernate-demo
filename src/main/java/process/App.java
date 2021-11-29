@@ -1,12 +1,6 @@
 package process;
 
-import model.entity.Label;
-import model.entity.Post;
-import model.entity.Writer;
-import repository.hibernate.LabelRepositoryImpl;
-import repository.hibernate.PostRepositoryImpl;
-import repository.hibernate.WriterRepositoryImpl;
-import util.HibernateUtil;
+import utils.HibernateUtil;
 
 /**
  * @author Nikita Gvardeev

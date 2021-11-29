@@ -1,7 +1,7 @@
 package view;
 
 import controller.PostController;
-import model.entity.Post;
+import entity.Post;
 
 import java.util.List;
 
