@@ -1,5 +1,9 @@
 language: java
 jdk: jdk8
+sudo: false
+cache:
+  directories:
+    - $HOME/.m2
 before_script:
   - echo "Start build"
 script:
